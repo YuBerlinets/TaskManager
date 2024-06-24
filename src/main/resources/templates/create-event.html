@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Create Event')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='createEvent')}"></header>
+    <h1 class="main_upper_text">Create Event</h1>
+    <div class="event_creation">
+        <form th:action="@{/createEvent}" th:object="${createEventDTO}" method="post">
+            <label class="user_input_label" for="eventType">Event Type:</label><br/>
+            <select class="user_input" name="eventType" id="eventType" th:field="*{eventType}" required>
+                <option class="user_input" th:each="type : ${eventTypes}"
+                        th:value="${type}" th:text="${type}"></option>
+            </select><br/>
+
+            <label class="user_input_label" for="description">Description:</label><br/>
+            <textarea class="user_input_textarea" name="description" id="description" th:field="*{description}"
+                      required></textarea><br/>
+
+            <label class="user_input_label" for="eventDate">Event Date:</label><br/>
+            <input class="user_input" type="datetime-local" name="eventDate" id="eventDate" th:field="*{eventDate}"
+                   required><br/>
+
+            <label class="user_input_label" for="invitedPeople">Invite People:</label><br/>
+            <select class="user_input_select" multiple name="invitedPeopleIds" id="invitedPeople"
+                    th:field="*{invitedPeopleUsernames}">
+                <option class="user_input" th:each="user : ${users}" th:value="${user.username}"
+                        th:text="${user.username}"></option>
+            </select><br/>
+
+            <button type="submit" class="submit_button">Create Event</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

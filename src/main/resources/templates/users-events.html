@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='User\'s Events')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='calendar')}"></header>
+    <h1 class="main_upper_text">User's Events</h1>
+    <table class="invited_people">
+        <tr>
+            <th>Event Type</th>
+            <th>Event Date</th>
+            <th>Event Time</th>
+            <th>Event Description</th>
+            <th>Details</th>
+        </tr>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.eventType}"></td>
+            <td th:text="${#temporals.format(event.eventDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#temporals.format(event.eventDate, 'HH:mm')}"></td>
+            <td th:text="${event.description}"></td>
+            <td><a th:href="@{/events/{id}(id=${event.eventId})}">Details</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

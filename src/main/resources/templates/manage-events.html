@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Events managing')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='calendar')}"></header>
+
+    <h1 class="text-center mt-5">Events managing</h1>
+    <table class="invited_people">
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="event : ${events}">
+            <td th:text="${#temporals.format(event.eventDate, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${event.description}"></td>
+            <td>
+                <form th:action="@{/deleteEvent}" method="post">
+                    <input type="hidden" name="eventId" th:value="${event.eventId}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/calendar}" class="btn btn-secondary mt-3">Return to calendar</a>
+</div>
+</body>
+</html>

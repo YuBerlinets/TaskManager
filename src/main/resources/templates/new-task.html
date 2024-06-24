@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='New Task')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='tasks')}"></header>
+    <h2 class="main_upper_text">Create New Task</h2>
+    <div class="task_creation">
+        <form th:action="@{/tasks/create}" th:object="${createTaskDTO}" method="post" class="task_creation_form">
+            <label class="user_input_label" for="taskType">Task Type:</label>
+            <select id="taskType" th:field="*{taskType}" class="task_input_select" required>
+                <option value="" disabled selected>Select task type</option>
+                <option th:value="DEBUG">Debug</option>
+                <option th:value="UPDATE">Update</option>
+                <option th:value="IMPROVE">Improve</option>
+            </select>
+            <label class="task_input_label" for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}" class="task_input" required>
+
+            <label class="user_input_label" for="description">Description:</label>
+            <textarea class="user_input_textarea" id="description" th:field="*{description}" required></textarea>
+
+            <button type="submit" class="create_new_task_button">Create Task</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

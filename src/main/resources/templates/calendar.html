@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Calendar')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='calendar')}"></header>
+    <h1 class="main_upper_text">Calendar - [[${month}]] [[${year}]]</h1>
+    <div class="upper_calendar" th:if="${isAuthorized}">
+        <a th:href="@{/createEvent}" class="submit_button">Create New Event</a>
+        <a th:href="@{/manageEvents}" class="submit_button">Manage Existing Events</a>
+    </div>
+    <div class="days">
+        <p class="day_text">Monday</p>
+        <p class="day_text">Tuesday</p>
+        <p class="day_text">Wednesday</p>
+        <p class="day_text">Thursday</p>
+        <p class="day_text">Friday</p>
+        <p class="day_text">Saturday</p>
+        <p class="day_text">Sunday</p>
+    </div>
+    <div class="calendar">
+        <div th:each="i : ${#numbers.sequence(1, firstDayOfWeek)}" class="day empty-day"></div>
+        <div th:each="day : ${days}" class="day">
+            <div th:each="event : ${events}" th:if="${event.eventDate.dayOfMonth == day}"
+                 th:classappend="' event-type-' + (${event.eventType.ordinal()} + 1)">
+                <a th:href="@{/events/{id}(id=${event.eventId})}">
+                    <span th:text="${event.eventType} + ' at ' + ${#temporals.format(event.eventDate, 'HH:mm')}"></span>
+                </a>
+            </div>
+            <span class="day-number" th:text="${day}"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

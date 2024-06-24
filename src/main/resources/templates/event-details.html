@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Event details')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='calendar')}"></header>
+    <h1 class="main_upper_text">Event Details</h1>
+    <div class="event-info">
+        <p th:text="|Event Id: ${event.eventId}|"></p>
+        <p th:text="|Event Type: ${event.eventType}|"></p>
+        <p th:text="|Description: ${event.description}|"></p>
+        <p th:text="|Date: ${#temporals.format(event.eventDate, 'dd-MM-yyyy HH:mm')}|"></p>
+        <p th:text="|Created: ${#temporals.format(event.creationDate, 'dd-MM-yyyy HH:mm')}|"></p>
+        <p th:text="|Created by: ${event.createdBy}|"></p>
+    </div>
+    <h2>Invited people:</h2>
+    <table class="invited_people">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tr th:each="person : ${event.invitedPeople}">
+            <td th:text="${person.username}"></td>
+            <td th:text="${person.email}"></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

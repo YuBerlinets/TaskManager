@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Tasks')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='tasks')}"></header>
+    <h2 class="main_upper_text">Tasks</h2>
+
+    <div class="tab-buttons">
+        <a th:href="@{/tasks(status='ongoing')}" class="submit_button"
+           th:classappend="${status} == 'ongoing' ? 'active' : ''">Ongoing Tasks</a>
+        <a th:href="@{/tasks(status='done')}" class="submit_button"
+           th:classappend="${status} == 'done' ? 'active' : ''">Done Tasks</a>
+        <a th:href="@{/tasks(status='todo')}" class="submit_button"
+           th:classappend="${status} == 'todo' ? 'active' : ''">Todo Tasks</a>
+    </div>
+
+    <div th:if="${isUserAllowedToCreateTasks}" class="create_task_div" style="width:160px">
+        <a th:href="@{/tasks/create}" class="create_new_task_button">Create New Task</a>
+    </div>
+
+    <div class="tasks">
+        <div th:if="${status} == 'ongoing'">
+            <h3>Ongoing Tasks</h3>
+            <div th:each="task : ${tasks}" class="task">
+                <p><strong>Title:</strong> <span th:text="${task.title}"></span></p>
+                <p><strong>Description:</strong> <span th:text="${task.description}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${task.status}"></span></p>
+                <p><strong>Created By:</strong> <span th:text="${task.createdBy.username}"></span></p>
+                <p><strong>Working on:</strong> <span th:if="${task.workingOn}"
+                                                      th:text="${task.workingOn.username}"></span>
+                </p>
+                <div th:if="${task.workingOn != null && task.workingOn.username == #authentication.name}">
+                    <form th:action="@{/tasks/markAsDone}" method="post">
+                        <input type="hidden" name="taskId" th:value="${task.taskId}">
+                        <button type="submit" class="submit_button">Mark as Done</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${status} == 'done'">
+            <h3>Done Tasks</h3>
+            <div th:each="task : ${tasks}" class="task">
+                <p><strong>Title:</strong> <span th:text="${task.title}"></span></p>
+                <p><strong>Description:</strong> <span th:text="${task.description}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${task.status}"></span></p>
+                <p><strong>Created By:</strong> <span th:text="${task.createdBy.username}"></span></p>
+            </div>
+        </div>
+
+        <div th:if="${status} == 'todo'">
+            <h3>Todo Tasks</h3>
+            <div th:each="task : ${tasks}" class="task">
+                <p><strong>Title:</strong> <span th:text="${task.title}"></span></p>
+                <p><strong>Description:</strong> <span th:text="${task.description}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${task.status}"></span></p>
+                <p><strong>Created By:</strong> <span th:text="${task.createdBy.username}"></span></p>
+                <div th:if="${isDev}">
+                    <form th:action="@{/tasks/take}" method="post">
+                        <input type="hidden" name="taskId" th:value="${task.taskId}">
+                        <button type="submit" class="btn btn-success">Take Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

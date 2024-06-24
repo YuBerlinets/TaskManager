@@ -1,0 +1,408 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #282828;
+    font-family: Roboto, sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0px auto;
+    padding: 20px;
+    background-color: #363636;
+}
+
+
+.upper_calendar {
+    margin-top: 10px;
+    margin-right: 16px;
+    text-align: right;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+header p {
+    font-size: 24px;
+    margin: 0;
+}
+
+header p a {
+    text-decoration: none;
+    color: #03AA78;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #03AA78;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #03AA78;
+    color: white;
+}
+
+.tab-buttons {
+    margin-top: 20px;
+
+}
+
+.tab-buttons a {
+    padding: 10px;
+    margin-top: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.tab-buttons a.active {
+    background-color: #03AA78;
+    color: white;
+}
+
+.task {
+    border: 1px solid #474747;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.tasks {
+    margin-top: 30px;
+}
+
+.login_div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.main_text {
+    text-align: center;
+    color: #03AA78;
+}
+
+.input_field {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 8px 13px 8px 13px;
+    border: 2px solid #494949;
+    color: #03AA78;
+    margin: 5px;
+}
+
+.input_field:focus {
+    border: 2px solid #03AA78;
+}
+
+.submit_button {
+    background-color: #03AA78;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 13px 8px 13px;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 120px;
+    border: 2px solid #03AA78;
+}
+
+.submit_button:hover {
+    background-color: #fff;
+    color: #03AA78;
+    transition: all 0.7s;
+    border: 2px solid #03AA78;
+}
+
+.create_new_task_button {
+    background-color: #03AA78;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 13px 8px 13px;
+    width: 155px;
+    border: 2px solid #03AA78;
+}
+
+.create_new_task_button:hover {
+    background-color: #fff;
+    color: #03AA78;
+    transition: all 0.7s;
+    border: 2px solid #03AA78;
+}
+
+.invited_people {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.invited_people th, .invited_people td {
+    border: 1px solid #494949;
+    padding: 8px;
+    text-align: left;
+}
+
+.invited_people th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #494949;
+    color: white;
+}
+
+.main_logo_header {
+    font-size: 34px;
+}
+
+.main_upper_text {
+    margin-top: 14px;
+    font-size: 30px;
+}
+
+.create_task_div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.user-info {
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.user_input_label {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.user_input {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 7px 12px 7px 12px;
+    border: 1px solid #494949;
+    color: #03AA78;
+
+}
+
+.user_input:focus {
+
+    border: 1px solid #03AA78;
+}
+
+.user_input:active {
+    border: 1px solid #03AA78;
+}
+
+.update_roles_button {
+    background-color: #03AA78;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 13px 8px 13px;
+    width: 150px;
+    border: 2px solid #03AA78;
+    margin-top: 10px;
+}
+
+.event-info {
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.event_creation {
+    margin-top: 25px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user_input_textarea {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 7px 12px 7px 12px;
+    border: 1px solid #494949;
+    color: #03AA78;
+    margin-top: 5px;
+    width: 400px;
+    height: 250px;
+    resize: none;
+}
+
+.user_input_select {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 7px 12px 7px 12px;
+    border: 1px solid #494949;
+    color: #03AA78;
+    margin-top: 5px;
+    width: 400px;
+    height: 300px;
+}
+
+.event-type-1 {
+    background-color: #b044b8;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.event-type-2 {
+    background-color: #357db0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.event-type-3 {
+    background-color: #4aba3f;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.day {
+    padding: 10px;
+    width: 200px;
+    height: 220px;
+    background-color: #494949;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.days {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+.day_text {
+    margin-bottom: 2px;
+}
+
+.day span {
+    display: block;
+}
+
+.day-number {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.task_creation {
+    margin-top: 25px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.task_creation_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.task_input_label {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.task_input_select {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 7px 12px 7px 12px;
+    border: 1px solid #494949;
+    color: #03AA78;
+    margin-top: 5px;
+    width: 15%;
+}
+
+.task_input {
+    background-color: #363636;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 7px 12px 7px 12px;
+    border: 1px solid #494949;
+    color: #03AA78;
+    margin-top: 5px;
+    width: 20%;
+}
+
+.account_buttons {
+    display: flex;
+    /*justify-content: space-around;*/
+    margin-top: 20px;
+}
+
+.account_button {
+    background-color: #03AA78;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 13px 8px 13px;
+    width: 150px;
+    border: 2px solid #03AA78;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.account_button:hover {
+    background-color: #fff;
+    color: #03AA78;
+    transition: all 0.7s;
+    border: 2px solid #03AA78;
+}
+
+.empty-day {
+    background-color: #2b2b2b;
+}
+
+.calendar_login_button {
+    color: #dee2e6;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.calendar_login_button:hover {
+    color: #03AA78;
+    text-decoration: none;
+}

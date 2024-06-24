@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}" href="../static/style.css">
+</head>
+<body>
+<div class="login_div">
+    <h1 class="main_text">SyHub</h1>
+    <form th:action="@{/login}" method="post">
+        <label for="username"></label>
+        <input type="text" name="username" id="username" placeholder="Login" class="input_field" required/>
+        <br/>
+        <label for="password"></label>
+        <input type="password" name="password" id="password" placeholder="Password" class="input_field" required/>
+        <br/>
+        <button type="submit" class="submit_button">Login</button>
+    </form>
+    <a th:href="@{/calendar}" th:text="Calendar" class="calendar_login_button"></a>
+</div>
+</body>
+</html>

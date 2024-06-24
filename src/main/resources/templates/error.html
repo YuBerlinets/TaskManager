@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Oops error')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <div class="text-center mt-5">
+        <h1 class="text-danger">Oops something went wrong...</h1>
+        <a th:href="@{/}" class="btn btn-secondary mt-3">Return to main page</a>
+    </div>
+
+</div>
+</body>
+</html>

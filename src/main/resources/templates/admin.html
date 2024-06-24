@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Admin panel')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='admin')}"></header>
+    <h1 class="main_upper_text">Admin Page</h1>
+
+    <h2 class="main_upper_text">Create User</h2>
+    <form th:action="@{/admin/createUser}" th:object="${createUserRequest}" method="post">
+        <label class="user_input_label" for="username">Username:</label><br/>
+        <input class="user_input" type="text" name="username" id="username" th:field="*{username}" required>
+        <br/>
+        <label class="user_input_label" for="firstName">First Name:</label><br/>
+        <input class="user_input" type="text" name="firstName" id="firstName" th:field="*{firstName}" required>
+        <br/>
+        <label class="user_input_label" for="lastName">Last Name:</label><br/>
+        <input class="user_input" type="text" name="lastName" id="lastName" th:field="*{lastName}" required>
+        <br/>
+        <label class="user_input_label" for="email">Email:</label><br/>
+        <input class="user_input" type="email" name="email" id="email" th:field="*{email}" required>
+        <br/>
+
+        <fieldset>
+            <legend>Roles:</legend>
+            <div th:each="role : ${availableRoles}">
+                <div th:if="${role.name()} != USER">
+                    <label class="user_input_label" th:for="${role}" th:text="${role}"></label>
+                    <input class="user_input" type="checkbox" th:field="*{roles}" th:value="${role}" th:name="${role}"
+                           th:id="${role}"/>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="submit_button">Create User</button>
+    </form>
+    <h2 class="main_upper_text">Update user roles</h2>
+    <form th:action="@{/admin/updateUser}" method="get">
+        <label class="user_input_label" for="search_username">Username:</label><br/>
+        <input class="user_input" type="text" name="username" id="search_username">
+        <br/>
+        <button type="submit" class="submit_button">Search User</button>
+    </form>
+</div>
+</body>
+</html>

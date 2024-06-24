@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Account')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments :: header(activePage='account')}">
+    </header>
+    <h2 class="main_upper_text">Account Information</h2>
+    <div class="account_buttons">
+
+        <p th:if="${isAdmin}"><a th:href="@{/admin}" class="account_button">Admin Panel</a></p>
+        <p><a th:href="@{/events/by-user/{username}(username=${user.username})}" class="account_button">My Events</a></p>
+    </div>
+    <div class="user-info">
+        <p><strong>Username: </strong><span th:text="${user.username}"></span></p>
+        <p><strong>Name: </strong> <span th:text="${user.firstName}"></span></p>
+        <p><strong>Surname: </strong><span th:text="${user.lastName}"></span></p>
+        <p><strong>Email: </strong> <span th:text="${user.email}"></span></p>
+        <p><strong>Role: </strong> <span th:text="${user.roles}"></span></p>
+    </div>
+    <h2 class="main_upper_text">Update Password</h2>
+    <form th:action="@{/account/update-password}" th:object="${updatePasswordDTO}" th:method="post">
+        <input type="hidden" id="username" name="username" th:value="${user.username}">
+        <label class="user_input_label" for="password">Password:</label><br/>
+        <input class="user_input" type="password" id="password" name="password" required>
+        <br/>
+        <label class="user_input_label" for="password_repeat">Repeat Password:</label><br/>
+        <input class="user_input" type="password" id="password_repeat" name="password_repeat" required>
+        <br/>
+        <button type="submit" class="submit_button">Update</button>
+    </form>
+</div>
+</body>
+</html>

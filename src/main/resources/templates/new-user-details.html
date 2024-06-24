@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(title='Calendar')}">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="container">
+    <h2 class="main_upper_text">New user created</h2>
+    <div class="user_info">
+        <p><strong>Username: </strong><span th:text="${userResponse.username}"></span></p>
+        <p><strong>Password: </strong><span th:text="${userResponse.password}"></span></p>
+        <p><strong>Name: </strong><span th:text="${userResponse.firstName}"></span></p>
+        <p><strong>Surname: </strong><span th:text="${userResponse.lastName}"></span></p>
+        <p><strong>Email: </strong><span th:text="${userResponse.email}"></span></p>
+        <p><strong>Role: </strong><span th:text="${userResponse.roles}"></span></p>
+    </div>
+    <p><a th:href="@{/admin}" class="create_new_task_button">Back to Admin Panel</a></p>
+</div>
+</body>
+</html>
